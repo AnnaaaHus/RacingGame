@@ -99,10 +99,10 @@ window.addEventListener("keydown", (e) => {
 
 // sensitivity listeners
 decreasePlayerSensitivity.addEventListener("click", () => {
-  PLAYER_SENSITIVITY = PLAYER_SENSITIVITY * 0.75;
+  PLAYER_SENSITIVITY = PLAYER_SENSITIVITY * 0.5;
 });
 increasePlayerSensitivity.addEventListener("click", () => {
-  PLAYER_SENSITIVITY = PLAYER_SENSITIVITY * 1.25;
+  PLAYER_SENSITIVITY = PLAYER_SENSITIVITY *3;
 });
 
 // generates background
@@ -289,12 +289,21 @@ function initialHtmlSetUp() {
   scoreCounter.innerHTML = `0 x `;
   playGame.innerHTML = "Play";
   menuTitle.innerHTML = "Racing game";
-  decreasePlayerSensitivity.innerHTML = "-";
-  increasePlayerSensitivity.innerHTML = "+";
-  personalBestDivText.innerHTML = "High score";
-  gamesPlayedDivText.innerHTML = "Games played";
-  sensitivityBoxText.innerHTML = "Sensitivity  "  ;
-
+  decreasePlayerSensitivity.innerHTML = "Min";
+  increasePlayerSensitivity.innerHTML = "Max";
+  personalBestDivText.innerHTML = " High score";
+  personalBestDivText.style.marginBottom = "40px"; 
+  gamesPlayedDivText.innerHTML = " Games played";
+  gamesPlayedDivText.style.marginBottom = "40px"; 
+  sensitivityBoxText.innerHTML = "  Sensitivity  "  ;
+  sensitivityBoxText.style.marginBottom = "40px"; 
+  decreasePlayerSensitivity.style.marginBottom = "40px"; 
+  increasePlayerSensitivity.style.marginBottom = "40px"; 
+  scoreBoard.style.marginBottom = "40px";
+  goldPhoto.style.marginBottom = "40px";
+  scoreCounter.style.marginBottom = "40px";
+  gamesPlayedDiv.style.marginBottom = "40px";
+  personalBestDiv.style.marginBottom = "40px";
   scoreBoard.classList.add("score");
   goldPhoto.classList.add("gold");
   goldPhoto.classList.add("gold-counter");

@@ -16,6 +16,42 @@ const decreasePlayerSensitivity = document.createElement("span");
 
 let game = new Game();
 
+let windowWidth = window.innerWidth;
+
+if (windowWidth < 768) {
+
+const leftButton = document.createElement("button");
+leftButton.id = "left-button";
+leftButton.textContent =  "←";
+leftButton.addEventListener("click", () => movePlayerLeft());
+
+const rightButton = document.createElement("button");
+rightButton.id = "right-button"; 
+rightButton.textContent = "→";
+rightButton.addEventListener("click", () => movePlayerRight());
+
+const upButton = document.createElement("button");
+upButton.id = "up-button";
+upButton.textContent = "↑";
+upButton.addEventListener("click", () => movePlayerUp());
+
+const downButton = document.createElement("button");
+downButton.id = "down-button";
+downButton.textContent = "↓";
+downButton.addEventListener("click", () => movePlayerDown());
+
+// Append buttons to the app container
+const controlsContainer = document.createElement("div");
+controlsContainer.classList.add("controls-container");
+controlsContainer.appendChild(leftButton);
+controlsContainer.appendChild(rightButton);
+controlsContainer.appendChild(upButton);
+controlsContainer.appendChild(downButton);
+app.appendChild(controlsContainer);
+
+}
+
+
 let PLAYER_SENSITIVITY = window.innerWidth * game.STEP_WIDTH;
 const MIN_BACKGROUND_INTERVAL = 150;
 const MAX_BACKGROUND_INTERVAL = 50;
@@ -195,7 +231,7 @@ function closeMenu() {
 function playerPositionSetUp() {
   player.style.width = (game.ROAD_WIDTH / 2 - game.TRAP_SIZE / 2) / 2 * 100 + "%";
   player.style.left = window.innerWidth / 2 - player.offsetWidth / 2 + "px";
-  player.style.top = window.innerHeight - player.offsetWidth * 1.2 + "px";
+  player.style.top =window.innerHeight - player.offsetWidth * 2.3 + "px";
 }
 
 
@@ -257,7 +293,7 @@ function initialHtmlSetUp() {
   increasePlayerSensitivity.innerHTML = "+";
   personalBestDivText.innerHTML = "High score";
   gamesPlayedDivText.innerHTML = "Games played";
-  sensitivityBoxText.innerHTML = "Sensitivity";
+  sensitivityBoxText.innerHTML = "Sensitivity  "  ;
 
   scoreBoard.classList.add("score");
   goldPhoto.classList.add("gold");
@@ -371,8 +407,36 @@ function generateRowDiv(gameRow, previousGameRow) {
   parentRoadDiv.appendChild(rightRoadSide);
   parentRoadDiv.appendChild(roadRightTriangle);
 
+ 
+
   if (gameRow.trap) {
+    
     const trapDiv = document.createElement("div");
+
+    const randomTrap = Math.floor(Math.random() * 5) + 1;
+
+
+    switch(randomTrap) {
+        case 1:
+          trapDiv.style.content = "url('img/f1.1.car.png')";
+            break;
+        case 2:
+          trapDiv.style.content = "url('img/f1.3.car.png')";
+            break;
+        case 3:
+          trapDiv.style.content = "url('img/f1.4.car.png')";
+            break;
+        case 4:
+          trapDiv.style.content = "url('img/f1.1.car.png')";
+            break;
+        case 5:
+          trapDiv.style.content = "url('img/wood-box.png');";
+            break;
+        default:
+          trapDiv.style.content = "url('img/wood-box.png');";
+    }
+
+    
     trapDiv.classList.add("trap");
     roadDiv.appendChild(trapDiv);
     let margin = Math.random() * (1 - game.TRAP_SIZE);

@@ -6,7 +6,7 @@
 #app {
     height: 100vh;
     width: 100vw;
-    background-image: url('img/grass.jpg');
+    background-image: url('img/back1.jpg');
     animation: moveIt 5s linear infinite;
     animation-play-state: running;
 }
@@ -38,16 +38,18 @@
 
 
 .trap {
-    content: url('img/wood-box.png');
+    /* content: url('img/wood-box.png'); */
     object-fit: contain;
+
+    transform: scale(2)
 }
 
 #player {
     position: absolute;
     z-index: 1;
-    top: 50%;
+    top: 70%;
     left: 50%;
-    content: url('img/kart.png');
+    content: url('img/f1.2.car.png');
 }
 
 .gold {
@@ -126,3 +128,75 @@
     border-radius: 8px;
     margin-left: 5px;
 }
+
+
+@media (max-width: 767px) {
+    #player {
+        width: 60px;
+        height: 50px;
+       
+    }
+
+
+.controls-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 50px); /* Adjust columns as needed */
+    grid-template-rows: repeat(3, 50px); /* Adjust rows as needed */
+    gap: 10px;
+    }
+  
+  /* Style for each control button */
+  .controls-container button {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 60px; /* Adjust width to your preference */
+  }
+  
+  /* Style for specific buttons */
+  #left-button {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  #right-button {
+    grid-column: 3;
+    grid-row: 2;
+  }
+  
+  #up-button {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  
+  #down-button {
+    grid-column: 2;
+    grid-row: 3;
+  }
+  
+  /* Hover effect */
+  .controls-container button:hover {
+    background-color: #e6e6e6;
+  }
+  
+  /* Active effect when button is clicked */
+  .controls-container button:active {
+    background-color: #cccccc;
+  }
+
+  .trap {
+    transform: scale(0.9)
+}
+  
+
+}
+
+
+

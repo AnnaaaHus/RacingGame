@@ -300,8 +300,8 @@ function initialHtmlSetUp() {
   decreasePlayerSensitivity.style.marginBottom = "40px"; 
   increasePlayerSensitivity.style.marginBottom = "40px"; 
   scoreBoard.style.marginBottom = "40px";
-  goldPhoto.style.marginBottom = "40px";
-  scoreCounter.style.marginBottom = "40px";
+
+ 
   gamesPlayedDiv.style.marginBottom = "40px";
   personalBestDiv.style.marginBottom = "40px";
   scoreBoard.classList.add("score");
@@ -439,10 +439,10 @@ function generateRowDiv(gameRow, previousGameRow) {
           trapDiv.style.content = "url('img/f1.1.car.png')";
             break;
         case 5:
-          trapDiv.style.content = "url('img/wood-box.png');";
+          trapDiv.style.content ="url('img/f1.1.car.png')";
             break;
         default:
-          trapDiv.style.content = "url('img/wood-box.png');";
+          trapDiv.style.content = "url('img/f1.1.car.png')";
     }
 
     

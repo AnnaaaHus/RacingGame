@@ -135,6 +135,18 @@
 .sensitivity-button:hover {
     background-color: #ad9e9e;
 }
+.controls-container {
+  display: none;
+
+  }
+  #pause-button {
+    display: none;
+  }
+
+  #navigation-box {
+  color:rgb(137, 0, 0);
+  }
+
 
 @media (max-width: 767px) {
     #player {
@@ -142,6 +154,18 @@
         height: 50px;
        
     }
+    #pause-button {
+      display: block;
+    }
+  
+
+    #navigation-box {
+      /* Override default styles if needed */
+      /* Change the innerHTML to "Use The Keys For Navigation." */
+      display: none; /* Приховати текст при розмірах екрану менш 767px */
+    }
+    
+
 
 
 .controls-container {
@@ -186,6 +210,26 @@
     grid-column: 2;
     grid-row: 3;
   }
+
+  #pause-button {
+    position: absolute; /* Position the button absolutely */
+    top: 10px; /* Set the top position to 10px */
+    left: 10px; /* Set the left position to 10px */
+    background-color: #0a4a0c; /* Set the background color */
+    color: white; /* Set the text color */
+    border: none; /* Remove the default border */
+    cursor: pointer; /* Make the button clickable */
+    width: 60px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    
+
+  }
   
   /* Hover effect */
   .controls-container button:hover {
@@ -204,42 +248,4 @@
 
 }
 
-.car-selection-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .car-button {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-size: cover;
-    background-position: center;
-    border: none;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .car-button:hover {
-    transform: scale(1.1);
-  }
-  
-  .car1 {
-    background-image: url('path/to/car1.png');
-  }
-  
-  .car2 {
-    background-image: url('path/to/car2.png');
-  }
-  
-  .car3 {
-    background-image: url('path/to/car3.png');
-  }
-  
-  .selected {
-    border: 2px solid #fff;
-  }
 

@@ -16,9 +16,6 @@ const decreasePlayerSensitivity = document.createElement("span");
 
 let game = new Game();
 
-let windowWidth = window.innerWidth;
-
-if (windowWidth < 768) {
 
 const leftButton = document.createElement("button");
 leftButton.id = "left-button";
@@ -40,6 +37,20 @@ downButton.id = "down-button";
 downButton.textContent = "↓";
 downButton.addEventListener("click", () => movePlayerDown());
 
+const pauseButton = document.createElement("button");
+pauseButton.id = "pause-button";
+pauseButton.textContent = "||";
+pauseButton.addEventListener("click", () => {
+  
+  if (game.isOver) return;
+  if (game.isPaused) {
+    closeMenu();
+  } else {
+    playGame.innerHTML = "continue";
+    openMenu();
+  }
+});
+
 // Append buttons to the app container
 const controlsContainer = document.createElement("div");
 controlsContainer.classList.add("controls-container");
@@ -47,9 +58,9 @@ controlsContainer.appendChild(leftButton);
 controlsContainer.appendChild(rightButton);
 controlsContainer.appendChild(upButton);
 controlsContainer.appendChild(downButton);
-app.appendChild(controlsContainer);
 
-}
+app.appendChild(controlsContainer);
+app.appendChild(pauseButton);
 
 
 let PLAYER_SENSITIVITY = window.innerWidth * game.STEP_WIDTH;
@@ -129,16 +140,16 @@ setInterval(() => {
 
 
 function movementLoop() {
-  if (keyState["KeyA"] || keyState["ArrowLeft"]) {
+  if (keyState["KeyA"] ) {
     movePlayerLeft();
   }
-  if (keyState["KeyD"] || keyState["ArrowRight"]) {
+  if (keyState["KeyD"] ) {
     movePlayerRight();
   }
-  if (keyState["KeyW"] || keyState["ArrowUp"]) {
+  if (keyState["KeyW"] ) {
     movePlayerUp();
   }
-  if (keyState["KeyS"] || keyState["ArrowDown"]) {
+  if (keyState["KeyS"] ) {
     movePlayerDown();
   }
 }
@@ -284,13 +295,15 @@ function initialHtmlSetUp() {
   let personalBestDivText = document.createElement("div");
   let gamesPlayedDivText = document.createElement("div");
   let sensitivityBoxText = document.createElement("div");
+  let navigationBox = document.createElement("div");
+  let navigationBoxText = document.createElement("div");
   let innerMenu = document.createElement("div");
-
+  navigationBoxText.id = "navigation-box";
   scoreCounter.innerHTML = `0 x `;
   playGame.innerHTML = "Play";
   menuTitle.innerHTML = "Racing game";
-  decreasePlayerSensitivity.innerHTML = "Min";
-  increasePlayerSensitivity.innerHTML = "Max";
+  decreasePlayerSensitivity.innerHTML = " x0.5 ";
+  increasePlayerSensitivity.innerHTML = " x3.0 ";
   personalBestDivText.innerHTML = " High score";
   personalBestDivText.style.marginBottom = "40px"; 
   gamesPlayedDivText.innerHTML = " Games played";
@@ -300,6 +313,8 @@ function initialHtmlSetUp() {
   decreasePlayerSensitivity.style.marginBottom = "40px"; 
   increasePlayerSensitivity.style.marginBottom = "40px"; 
   scoreBoard.style.marginBottom = "40px";
+  navigationBoxText.innerHTML = "  Use The WASD Keys For Car Control. Space For Pause."  ;
+  navigationBoxText.style.marginBottom = "40px";
 
  
   gamesPlayedDiv.style.marginBottom = "40px";
@@ -316,8 +331,10 @@ function initialHtmlSetUp() {
   player.id = "player";
   innerMenu.style.display = "inline-flex";
 
+
   sensitivityBox.append(decreasePlayerSensitivity);
   sensitivityBox.append(increasePlayerSensitivity);
+  navigationBox.append(navigationBoxText);
   menuLeftBox.appendChild(personalBestDivText);
   menuLeftBox.appendChild(gamesPlayedDivText);
   menuLeftBox.appendChild(sensitivityBoxText);
@@ -326,6 +343,7 @@ function initialHtmlSetUp() {
   menuRightBox.appendChild(sensitivityBox);
   innerMenu.appendChild(menuLeftBox);
   innerMenu.appendChild(menuRightBox);
+  menu.appendChild(navigationBoxText);
 
   scoreBoard.appendChild(scoreCounter);
   scoreBoard.appendChild(goldPhoto);
@@ -436,10 +454,10 @@ function generateRowDiv(gameRow, previousGameRow) {
           trapDiv.style.content = "url('img/f1.4.car.png')";
             break;
         case 4:
-          trapDiv.style.content = "url('img/f1.1.car.png')";
+          trapDiv.style.content = "url('img/f1.5.car.png')";
             break;
         case 5:
-          trapDiv.style.content ="url('img/f1.1.car.png')";
+          trapDiv.style.content ="url('img/f1.6.car.png')";
             break;
         default:
           trapDiv.style.content = "url('img/f1.1.car.png')";

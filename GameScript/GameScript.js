@@ -1,4 +1,4 @@
-import { Game } from "./modules/Game.js";
+import { Game } from "./Game.js";
 
 const app = document.querySelector("#app");
 const map = document.querySelector("#map");
